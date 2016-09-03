@@ -7,7 +7,7 @@ module RestPki
 
     def initialize(error)
       @error = error
-      super error.message
+      # super error.message
     end
   end
 
@@ -19,7 +19,7 @@ module RestPki
 
     def initialize(parsed_error)
       @parsed_error = parsed_error
-      super parsed_error[:message] || parsed_error["message"]
+      # super parsed_error[:message] || parsed_error["message"]
     end
   end
 
@@ -27,7 +27,7 @@ module RestPki
     attr_reader :error
     def initialize(error)
       @error = error
-      super error
+      # super error
     end
   end
 
