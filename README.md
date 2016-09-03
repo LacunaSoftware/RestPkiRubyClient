@@ -20,12 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
-    $ require 'rest_pki'
-
 Create a initialize file
 
-    $ RestPki.api_key = 'PLACE YOUR API KEY/ACCESS TOKEN'
-
+```ruby
+    require 'rest_pki'
+    RestPki.api_key = 'PLACE YOUR API KEY/ACCESS TOKEN'
+```
 
 ## Contributing
 
