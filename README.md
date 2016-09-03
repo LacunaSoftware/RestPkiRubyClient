@@ -21,7 +21,9 @@ Or install it yourself as:
 ## Usage
 
     $ require 'rest_pki'
+
 Create a initialize file
+
     $ RestPki.api_key = 'PLACE YOUR API KEY/ACCESS TOKEN'
 
 
