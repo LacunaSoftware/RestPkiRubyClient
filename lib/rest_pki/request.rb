@@ -4,7 +4,7 @@ require 'multi_json'
 
 module RestPki
   class Request
-    attr_accessor :path, :method, :parameters, :headers, :query
+    attr_accessor :path, :method, :parameters, :headers
 
     DEFAULT_HEADERS = {
       'Content-Type' => 'application/json; charset=utf8',
@@ -17,7 +17,6 @@ module RestPki
       @path       = path
       @method     = method
       @parameters = options[:params]  || Hash.new
-      @query      = options[:query]   || Hash.new
       @headers    = options[:headers] || Hash.new
     end
 
