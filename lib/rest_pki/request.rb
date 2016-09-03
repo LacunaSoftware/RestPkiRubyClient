@@ -14,6 +14,8 @@ module RestPki
     def initialize(path, method, options={})
       raise RestPki::RequestError, 'You need to configure a API key before performing requests.' unless RestPki.api_key
 
+      headers['Authorization'] = "Bearer #{RestPki.api_key}"
+
       @path       = path
       @method     = method
       @parameters = options[:params]  || Hash.new
@@ -65,7 +67,6 @@ module RestPki
 
     protected
     def request_params
-      headers['Authorization'] = "Bearer #{RestPki.api_key}"
       {
         method:       method,
         url:          full_api_url,
