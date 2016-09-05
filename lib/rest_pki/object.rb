@@ -17,6 +17,12 @@ module RestPki
       @unsaved_attributes.add key
     end
 
+    def unsaved_attributes
+      Hash[@unsaved_attributes.map do |key|
+        [ key, to_hash_value(self[key], :unsaved_attributes) ]
+      end]
+    end
+
     def empty?
       @attributes.empty?
     end
@@ -94,7 +100,7 @@ module RestPki
         when Array
           response.map{ |i| convert(i, object) }
         when Hash
-          resource_class_for(object).new(response, object)                #response['authentication']).new(response)
+          resource_class_for(object).new(response, object)     #response['object']).new(response)
         else
           response
         end
