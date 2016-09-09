@@ -12,7 +12,7 @@ module RestPki
     }
 
     def initialize(path, method, options={})
-      raise RestPki::RequestError, 'You need to configure a API key before performing requests.' unless RestPki.api_key
+      raise RestPki::RequestError, 'You need to configure a API key before performing requests.' unless RestPki.api_key and RestPki.api_key != 'PLACE_YOUR_API_KEY_HERE'
 
       headers['Authorization'] = "Bearer #{RestPki.api_key}"
 
