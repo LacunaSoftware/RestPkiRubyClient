@@ -21,7 +21,7 @@ module RestPki
                                                              pdfToSign: self.pdf_content_base64,
                                                              signaturePolicyId: self.signature_policy_id,
                                                              callbackArgument: self.callback_argument,
-                                                             visual_representation: self.visual_representation
+                                                             visualRepresentation: self.visual_representation
       }).call('pades_model')
     end
 
