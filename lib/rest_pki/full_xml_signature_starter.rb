@@ -2,8 +2,7 @@
 module RestPki
   class FullXmlSignatureStarter < XmlSignatureStarter
 
-    def initialize(client)
-      super(client)
+    def initialize
     end
 
     def start_with_webpki

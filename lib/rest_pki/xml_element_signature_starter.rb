@@ -3,8 +3,7 @@ module RestPki
   class XmlElementSignatureStarter < XmlSignatureStarter
     attr_accessor :element_tosign_id, :id_resolution_table
 
-    def initialize(client)
-      super(client)
+    def initialize
     end
 
     def start_with_webpki

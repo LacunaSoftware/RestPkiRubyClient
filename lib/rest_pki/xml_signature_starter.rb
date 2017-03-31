@@ -2,11 +2,10 @@ require 'base64'
 
 module RestPki
   class XmlSignatureStarter
-    attr_accessor :client, :xml_content, :xpath, :insertion_option, :namespace_option, :namespace_manager,
+    attr_accessor :xml_content, :xpath, :insertion_option, :namespace_option, :namespace_manager,
                   :signature_element_id, :security_context_id, :signature_policy_id, :callback_argument
 
-    def initialize(client)
-      @client = client
+    def initialize
     end
 
     def set_xml_path(local_path)
