@@ -2,10 +2,9 @@ require 'base64'
 
 module RestPki
   class XmlSignatureFinisher
-    attr_accessor :token, :client, :done, :signed_xml_content, :certificate, :callback_argument
+    attr_accessor :token, :done, :signed_xml_content, :certificate, :callback_argument
 
-    def initialize(client)
-      @client = client
+    def initialize
     end
 
     def finish
