@@ -20,7 +20,7 @@ module RestPki
         data['idResolutionTable'] = @id_resolution_table.to_model
       end
 
-      response = RestPki::Request.post('Api/XmlSignatures/XmlElementSignature', params=data).call('xml_model')
+      response = RestPki::Request.post('Api/XmlSignatures/XmlElementSignature', params: data).call('xml_model')
       response.token
     end
 
