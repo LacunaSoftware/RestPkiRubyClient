@@ -13,7 +13,7 @@ module RestPki
         def get(url, object_model)
             verb = 'GET'
             params = get_rest_params(verb, url)
-            response = null
+            response = nil
 
             begin
                 response = RestClient::Request.execute params
@@ -28,7 +28,7 @@ module RestPki
         def post(url, data, object_model)
             verb = 'POST'
             params = get_rest_params(verb, url, data)
-            response = null
+            response = nil
 
             begin
                 response = RestPki::Request.execute params
