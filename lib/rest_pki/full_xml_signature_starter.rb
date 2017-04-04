@@ -12,12 +12,12 @@ module RestPki
             end
 
             request = get_request
-            response = @restpki_client.post('Api/XmlSignatures/FullXmlSignature', params: request, object_model: 'xml_model')
+            response = @restpki_client.post('Api/XmlSignatures/FullXmlSignature', request, 'xml_model')
 
             unless response.certificate.nil?
-                @signer_certificate = response.certificate
-            end
-            @done = true
+            @signer_certificate = response.certificate
+        end
+        @done = true
 
             response.token
         end

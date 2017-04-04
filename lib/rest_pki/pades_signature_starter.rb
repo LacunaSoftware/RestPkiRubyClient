@@ -55,7 +55,7 @@ module RestPki
                 request['certificate'] = Base64.encode64(@signer_certificate)
             end
 
-            response = @restpki_client.post('Api/PadesSignatures', data: request, object_model: 'pades_model')
+            response = @restpki_client.post('Api/PadesSignatures', request, 'pades_model')
 
             unless response.certificate.nil?
                 @signer_certificate = response.certificate

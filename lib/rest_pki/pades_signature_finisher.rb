@@ -12,10 +12,10 @@ module RestPki
                 end
                 response = nil
                 if @signature.nil?
-                    response = @restpki_client.post("Api/PadesSignatures/#{@token}/Finalize", data: null, object_model: 'pades_model')
+                    response = @restpki_client.post("Api/PadesSignatures/#{@token}/Finalize", nil, 'pades_model')
                 else
                     request = { signature: Base64.encode64(@signature) }
-                    response = @restpki_client.post("Api/PadesSignatures/#{@token}/SignedBytes", data: request, object_model: 'pades_model')
+                    response = @restpki_client.post("Api/PadesSignatures/#{@token}/SignedBytes", request, 'pades_model')
                 end
 
                 @signed_pdf_content = Base64.decode64(response.signedPdf)

@@ -15,10 +15,10 @@ module RestPki
             end
             response = nil
             if @signature.nil?
-                response = @restpki_client.post("Api/XmlSignatures/#{@token}/Finalize", data: null, object_model: 'xml_model')
+                response = @restpki_client.post("Api/XmlSignatures/#{@token}/Finalize", nil, 'xml_model')
             else
                 request = { signature: Base64.encode64(@signature) }
-                response = @restpki_client.post("Api/XmlSignatures/#{@token}/SignedBytes", data: request, object_model: 'xml_model')
+                response = @restpki_client.post("Api/XmlSignatures/#{@token}/SignedBytes", request, 'xml_model')
             end
 
             @signed_xml_content = Base64.decode64(response.signedXml)

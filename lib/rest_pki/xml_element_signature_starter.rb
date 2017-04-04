@@ -23,7 +23,7 @@ module RestPki
                 request['idResolutionTable'] = @id_resolution_table.to_model
             end
 
-            response = @restpki_client.post('Api/XmlSignatures/XmlElementSignature', params: request, object_model: 'xml_model')
+            response = @restpki_client.post('Api/XmlSignatures/XmlElementSignature', request, 'xml_model')
 
             unless response.certificate.nil?
                 @certificate = response.certificate

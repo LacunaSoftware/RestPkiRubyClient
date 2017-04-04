@@ -13,12 +13,12 @@ module RestPki
 
         def start_with_webpki(security_context_id)
             request = {securityContextId: security_context_id}
-            response = @restpki_client.post('Api/Authentications', data: request, object_model: 'authentication_model')
+            response = @restpki_client.post('Api/Authentications', request, 'authentication_model')
             response.token
         end
 
         def complete_with_webpki(token)
-            response = @restpki_client.post("Api/Authentications/#{token}/Finalize", data: null, object_model: 'authentication_model')
+            response = @restpki_client.post("Api/Authentications/#{token}/Finalize", nil, 'authentication_model')
             unless response.certificate.nil?
                 @certificate = response.certificate
             end
