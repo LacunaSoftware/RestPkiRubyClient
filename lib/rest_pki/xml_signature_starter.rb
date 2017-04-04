@@ -64,7 +64,7 @@ module RestPki
                 'securityContextId': @security_context_id
             }
             unless @xml_content.nil?
-                request['xml'] = xml_content
+                request['xml'] = @xml_content_base64
             end
             unless @xpath.nil? or @insertion_option.nil?
                 request['signatureElementLocation'] = {

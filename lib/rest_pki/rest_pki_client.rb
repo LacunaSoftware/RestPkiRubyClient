@@ -45,12 +45,10 @@ module RestPki
         end
 
         private
-        attr_accessor :endpoint_url, :access_token
-
         def get_rest_params(method, url, params=nil)
             {
                 method: method,
-                url: url,
+                url: @endpoint_url + url,
                 payload: params ? MultiJson.encode(params) : nil,
                 open_timeout: 30,
                 timeout: 90,

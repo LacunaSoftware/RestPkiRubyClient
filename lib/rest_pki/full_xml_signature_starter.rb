@@ -7,7 +7,7 @@ module RestPki
 
         def start_with_webpki
             verify_common_parameters(true)
-            if @xml_content.nil?
+            if @xml_content_base64.nil?
                 raise 'The XML to sign was not set'
             end
 
