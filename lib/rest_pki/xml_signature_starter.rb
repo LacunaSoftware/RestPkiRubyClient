@@ -63,7 +63,7 @@ module RestPki
                 'signaturePolicyId': @signature_policy_id,
                 'securityContextId': @security_context_id
             }
-            unless @xml_content.nil?
+            unless @xml_content_base64.nil?
                 request['xml'] = @xml_content_base64
             end
             unless @xpath.nil? or @insertion_option.nil?

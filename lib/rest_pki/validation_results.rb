@@ -81,7 +81,7 @@ module RestPki
         def convert_items(items)
             converted = []
             items.each do |item|
-                converted.push(new ValidationItem(item))
+                converted.push(ValidationItem.new(item))
             end
             converted
         end
