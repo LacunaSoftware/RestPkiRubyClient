@@ -31,7 +31,7 @@ module RestPki
             response = nil
 
             begin
-                response = RestPki::Request.execute params
+                response = RestClient::Request.execute params
             rescue RestClient::Exception => ex
                 raise RestUnreachableError.new(verb, url, ex.message)
             end
