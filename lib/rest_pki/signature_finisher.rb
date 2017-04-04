@@ -22,10 +22,11 @@ module RestPki
                 @callback_argument
             end
 
-            def get_certificate_info
+            def certificate_info
                 unless @done
                     raise 'The certificate field can only be accessed after calling the finish method'
                 end
+                @certificate_info
             end
         end
     end
