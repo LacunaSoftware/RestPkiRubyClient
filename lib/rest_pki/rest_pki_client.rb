@@ -53,6 +53,7 @@ module RestPki
                 open_timeout: 30,
                 timeout: 90,
                 headers: {
+                    'Content-Type': 'application/json; charset=utf8',
                     Accept: 'application/json',
                     Authorization: "Bearer #{@access_token}"
                 }
