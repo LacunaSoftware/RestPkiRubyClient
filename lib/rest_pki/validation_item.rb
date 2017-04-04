@@ -9,7 +9,7 @@ module RestPki
             @detail = model.detail
             @inner_validation_results = nil
             unless model.innerValidationResults.nil?
-                @inner_validation_results = ValidationResults.new(model.innerValidationResults)
+                @inner_validation_results = RestPki::ValidationResults.new(model.innerValidationResults)
             end
         end
 
