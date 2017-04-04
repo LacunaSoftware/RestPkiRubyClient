@@ -1,5 +1,5 @@
 
-module RestPkI
+module RestPki
     class SignatureStarter
         attr_accessor :signature_policy_id, :security_context_id, :callback_argument
 
