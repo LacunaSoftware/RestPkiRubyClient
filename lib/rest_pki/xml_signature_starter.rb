@@ -72,14 +72,7 @@ module RestPki
                     'insertionOption': @insertion_option
                 }
                 unless @namespace_manager.nil?
-                    namespaces = []
-                    @namespace_manager.namespaces.each do |key, value|
-                        namespaces.push({
-                            prefix: key,
-                            uri: value
-                        })
-                    end
-                    request['signatureElementLocation']['namespaces'] = namespaces
+                    request['signatureElementLocation']['namespaces'] = @namespace_manager.namespaces
                 end
             end
             request
