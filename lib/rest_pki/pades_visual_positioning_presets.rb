@@ -1,7 +1,7 @@
 
 module RestPki
     class PadesVisualPositioningPresets
-        @@cached_presets = []
+        @@cached_presets = Hash.new
 
         def self.get_footnote(restpki_client, page_number=nil, rows=nil)
             url_segment = 'Footnote'
