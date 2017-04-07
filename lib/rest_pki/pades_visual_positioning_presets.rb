@@ -18,12 +18,13 @@ module RestPki
             get_preset(restpki_client, 'NewPage')
         end
 
+
         private
         def self.get_preset(restpki_client, url_segment)
             if @@cached_presets.has_key? url_segment
                 return @@cached_presets[url_segment]
             end
-            preset = restpki_client.get("Api/PadesVisualPositioningPresets/#{url_segment}")
+            preset = restpki_client.get("Api/PadesVisualPositioningPresets/#{url_segment}", 'pades_model')
             @cached_presets[url_segment] = preset
             preset
         end
