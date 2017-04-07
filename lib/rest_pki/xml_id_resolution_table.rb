@@ -4,8 +4,8 @@ module RestPki
 
         def initialize(inc_xml_id_attribute=true)
             @include_xml_id_attribute = inc_xml_id_attribute
-            @element_id_attributes = []
-            @global_id_attributes = []
+            @element_id_attributes = Hash.new
+            @global_id_attributes = Hash.new
         end
 
         def add_global_id_attribute(local_name, namespace=nil)

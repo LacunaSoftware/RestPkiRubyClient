@@ -2,7 +2,6 @@ require 'base64'
 
 module RestPki
     class XmlSignatureFinisher < SignatureFinisher
-        attr_accessor :signed_xml_content
 
         def initialize(restpki_client)
             super(restpki_client)
@@ -11,7 +10,7 @@ module RestPki
 
         def finish
             if @token.nil?
-                raise 'The Token was not set'
+                raise 'The token was not set'
             end
             response = nil
             if @signature.nil?
@@ -29,9 +28,16 @@ module RestPki
             @signed_xml_content
         end
 
+        def signed_xml_content
+            unless @done
+                raise 'The "signed_xml_content" field can only be accessed after calling the finish method'
+            end
+            @signed_xml_content
+        end
+
         def write_signed_xml(local_xml_path)
             unless @done
-                raise 'The method write_signed_xml() can only be called after calling the finish method'
+                raise 'The method write_signed_xml can only be called after calling the finish method'
             end
 
             file = File.open(local_xml_path, 'wb')

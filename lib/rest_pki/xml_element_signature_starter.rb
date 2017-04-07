@@ -11,10 +11,10 @@ module RestPki
         def start_with_webpki
             verify_common_parameters(true)
             if @xml_content_base64.nil?
-                raise 'The XML to sign was not set'
+                raise 'The XML was not set'
             end
             if @element_tosign_id.nil?
-                raise 'The XML element id to sign was not set'
+                raise 'The XML element Id to sign was not set'
             end
 
             request = get_request

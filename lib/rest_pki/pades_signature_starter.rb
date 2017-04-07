@@ -58,7 +58,7 @@ module RestPki
             response = @restpki_client.post('Api/PadesSignatures', request, 'pades_model')
 
             unless response.certificate.nil?
-                @signer_certificate = response.certificate
+                @certificate_info = response.certificate
             end
             @done = true
 

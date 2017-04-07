@@ -9,14 +9,14 @@ module RestPki
             @security_context_id = nil
             @callback_argument = nil
             @done = false
-            @signer_certificate = nil
+            @certificate_info = nil
         end
 
-        def signer_certificate
+        def certificate_info
             unless @done
-                raise 'The certificate field can only be accessed after calling one of the start methods'
+                raise 'The "certificate_info" field can only be accessed after calling one of the start methods'
             end
-            @signer_certificate
+            @certificate_info
         end
 
         def start_with_webpki

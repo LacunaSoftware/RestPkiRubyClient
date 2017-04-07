@@ -67,7 +67,7 @@ module RestPki
                     text += ", #{@warnings.to_a.length} warnings"
                 end
                 if has_passed_checks
-                    if !has_errors && !has_warnings
+                    if !has_errors and !has_warnings
                         text += ', all passed'
                     else
                         text += ", #{@passed_checks.to_a.length} passed"

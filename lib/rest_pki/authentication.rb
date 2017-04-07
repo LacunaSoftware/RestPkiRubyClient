@@ -4,7 +4,6 @@ require 'multi_json'
 
 module RestPki
     class Authentication
-        attr_reader :done
 
         def initialize(restpki_client)
             @restpki_client = restpki_client
@@ -12,7 +11,7 @@ module RestPki
         end
 
         def start_with_webpki(security_context_id)
-            request = {securityContextId: security_context_id}
+            request = { securityContextId: security_context_id }
             response = @restpki_client.post('Api/Authentications', request, 'authentication_model')
             response.token
         end

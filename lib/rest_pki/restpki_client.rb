@@ -66,7 +66,7 @@ module RestPki
                 ex = null
                 begin
                     response = MultiJson.decode response.body
-                    if status_code == 422 and response.code
+                    if status_code == 422 and response.code.to_a.empty?
                         if response.code == 'ValidationError'
                             vr = ValidationResults.new(response.validationResults)
                             ex = ValidationError.new(verb, url, vr)

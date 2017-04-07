@@ -1,36 +1,13 @@
-# RestPki
+REST PKI client lib for Ruby
+============================
 
-TODO: Write a gem description
+This library contains classes that encapsulate the calls to the REST PKI API.
 
-## Installation
+The recommended way to install **REST PKI Client lib** is through [RubyGems](https://rubygems.org/):
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'rest_pki'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install rest_pki
-
-## Usage
-
-Create a initialize file
-
-```ruby
-    require 'rest_pki'
-    RestPki.api_key = 'PLACE YOUR API KEY/ACCESS TOKEN'
-```
-
-## Contributing
-
-1. Fork it ( https://github.com/LacunaSoftware/RestPkiRubyClient/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+    gem 'rest_pki', '<package_version>'
+    
+Samples
+-------
+Please visit the [REST PKI samples repository](https://github.com/LacunaSoftware/RestPkiSamples/tree/master/RubyOnRails)
+for examples on how to use this library.

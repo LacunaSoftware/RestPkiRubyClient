@@ -6,10 +6,10 @@ module RestPki
         def initialize(restpki_client)
             super(restpki_client)
             @xml_content_base64 = nil
+            @signature_element_id = nil
             @xpath = nil
             @insertion_option = nil
             @namespace_manager = nil
-            @signature_element_id = nil
         end
 
         #region set_xml_tosign
@@ -59,17 +59,17 @@ module RestPki
 
         def get_request
             request = {
-                'signatureElementId': @signature_element_id,
-                'signaturePolicyId': @signature_policy_id,
-                'securityContextId': @security_context_id
+                signatureElementId: @signature_element_id,
+                signaturePolicyId: @signature_policy_id,
+                securityContextId: @security_context_id
             }
             unless @xml_content_base64.nil?
                 request['xml'] = @xml_content_base64
             end
             unless @xpath.nil? or @insertion_option.nil?
                 request['signatureElementLocation'] = {
-                    'xPath': @xpath,
-                    'insertionOption': @insertion_option
+                    xPath: @xpath,
+                    insertionOption: @insertion_option
                 }
                 unless @namespace_manager.nil?
                     request['signatureElementLocation']['namespaces'] = @namespace_manager.namespaces

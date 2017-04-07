@@ -26,12 +26,19 @@ module RestPki
                 @signed_pdf_content
             end
 
-            def write_signed_pdf(local_pdf_path)
+            def signed_pdf_content
                 unless @done
-                    raise 'The method write_signed_pdf() can only be called after calling the finish method'
+                    raise 'The "signed_pdf_content" field can only be accessed after calling the finish method'
+                end
+                @signed_pdf_content
+            end
+
+            def write_signed_pdf(pdf_path)
+                unless @done
+                    raise 'The method write_signed_pdf can only be called after calling the finish method'
                 end
 
-                file = File.open(local_pdf_path, 'wb')
+                file = File.open(pdf_path, 'wb')
                 file.write(@signed_pdf_content)
                 file.close
             end
