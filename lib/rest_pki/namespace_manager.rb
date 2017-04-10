@@ -8,7 +8,7 @@ module RestPki
     end
 
     def add_namespace(prefix, uri)
-      ns = { 'prefix': prefix, 'uri': uri }
+      ns = { prefix: prefix, uri: uri }
       @namespaces.push(ns)
     end
 

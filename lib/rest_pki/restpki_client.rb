@@ -13,7 +13,6 @@ module RestPki
         def get(url, object_model)
             verb = 'GET'
             params = get_rest_params(verb, url)
-            response = nil
 
             begin
                 response = RestClient::Request.execute params
@@ -22,13 +21,12 @@ module RestPki
             end
             check_response(verb, url, response)
 
-            RestPkiObject.convert(MultiJson.decode(response.body), object_model)
+            RestPkiObject.convert(MultiJson.decode(response['body']), object_model)
         end
 
         def post(url, data, object_model)
             verb = 'POST'
             params = get_rest_params(verb, url, data)
-            response = nil
 
             begin
                 response = RestClient::Request.execute params
@@ -37,7 +35,7 @@ module RestPki
             end
             check_response(verb, url, response)
 
-            RestPkiObject.convert(MultiJson.decode(response.body), object_model)
+            RestPkiObject.convert(MultiJson.decode(response['body']), object_model)
         end
 
         def get_authentication
@@ -60,21 +58,21 @@ module RestPki
             }
         end
 
-        def check_response(verb, url, response)
-            status_code = response.code
-            if status_code < 200 or status_code > 299
+        def check_response(verb, url, http_response)
+            status_code = http_response['code']
+            if status_code < 200 || status_code > 299
                 ex = null
                 begin
-                    response = MultiJson.decode response.body
-                    if status_code == 422 and response.code.to_a.empty?
-                        if response.code == 'ValidationError'
-                            vr = ValidationResults.new(response.validationResults)
+                    response = MultiJson.decode http_response['body']
+                    if status_code == 422 && response['code'].to_s.blank?
+                        if response['code'] == 'ValidationError'
+                            vr = ValidationResults.new(response['validationResults'])
                             ex = ValidationError.new(verb, url, vr)
                         else
-                            ex = RestPkiError.new(verb, url, response.code, response.detail)
+                            ex = RestPkiError.new(verb, url, response['code'], response['detail'])
                         end
                     else
-                        ex = RestError.new(verb, url, status_code, response.message)
+                        ex = RestError.new(verb, url, status_code, response['message'])
                     end
                 rescue => e
                     ex = RestError.new(verb, url, status_code)

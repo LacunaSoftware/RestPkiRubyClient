@@ -5,7 +5,7 @@ module RestPki
 
         def initialize(verb, url, error_code, detail)
             message = "REST PKI action #{verb} #{url} error: #{error_code}"
-            unless detail.to_s.empty?
+            unless detail.to_s.blank?
                 message += " (#{detail})"
             end
             super(message, verb, url)

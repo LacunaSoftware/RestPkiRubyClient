@@ -7,30 +7,32 @@ module RestPki
 
         def initialize(restpki_client)
             @restpki_client = restpki_client
+            @certificate_info = nil
             @done = false
         end
 
         def start_with_webpki(security_context_id)
             request = { securityContextId: security_context_id }
             response = @restpki_client.post('Api/Authentications', request, 'authentication_model')
-            response.token
+            response['token']
         end
 
         def complete_with_webpki(token)
             response = @restpki_client.post("Api/Authentications/#{token}/Finalize", nil, 'authentication_model')
-            unless response.certificate.nil?
-                @certificate = response.certificate
+            
+            unless response['certificate'].nil?
+                @certificate_info = response['certificate']
             end
             @done = true
 
-            ValidationResults.new(response.validationResults)
+            ValidationResults.new(response['validationResults'])
         end
 
-        def certificate
+        def certificate_info
             unless @done
-                raise 'The field can only be accessed after calling the complete_with_webpki method'
+                raise 'The field "certificate_info" can only be accessed after calling the complete_with_webpki method'
             end
-            @certificate
+            @certificate_info
         end
     end
 end

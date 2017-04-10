@@ -2,10 +2,10 @@
 module RestPki
   class XmlInsertionOptions
 
-    APPEND_CHILD = 'appendChild'
-    PREPEND_CHILD = 'prependChild'
-    APPEND_SIBLING = 'appendSibling'
-    PREPEND_SIBLING = 'prependSibling'
+    APPEND_CHILD = 'AppendChild'
+    PREPEND_CHILD = 'PrependChild'
+    APPEND_SIBLING = 'AppendSibling'
+    PREPEND_SIBLING = 'PrependSibling'
 
   end
 end

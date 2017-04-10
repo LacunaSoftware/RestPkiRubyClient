@@ -7,7 +7,7 @@ module RestPki
 
         def start_with_webpki
             verify_common_parameters(true)
-            if @xml_content_base64.nil?
+            if @xml_content_base64.to_a.blank?
                 raise 'The XML to sign was not set'
             end
 
@@ -15,12 +15,12 @@ module RestPki
 
             response = @restpki_client.post('Api/XmlSignatures/FullXmlSignature', request, 'xml_model')
 
-            unless response.certificate.nil?
-                @signer_certificate = response.certificate
+            unless response['certificate'].nil?
+                @certificate = response['certificate']
             end
             @done = true
 
-            response.token
+            response['token']
         end
 
     end

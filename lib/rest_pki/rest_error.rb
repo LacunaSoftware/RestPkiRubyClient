@@ -5,7 +5,7 @@ module RestPki
 
         def initialize(verb, url, status_code, error_message=nil)
             message = "REST action #{verb} #{url} returned HTTP error #{status_code}"
-            unless error_message.to_s.empty?
+            unless error_message.to_s.blank?
                 message += ": #{error_message}"
             end
             super(message, verb, url)

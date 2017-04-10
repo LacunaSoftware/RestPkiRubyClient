@@ -2,7 +2,7 @@ module RestPki
     class XmlIdResolutionTable
         attr_accessor :include_xml_id_attribute, :element_id_attributes, :global_id_attributes
 
-        def initialize(inc_xml_id_attribute=true)
+        def initialize(inc_xml_id_attribute=nil)
             @include_xml_id_attribute = inc_xml_id_attribute
             @element_id_attributes = Hash.new
             @global_id_attributes = Hash.new
@@ -30,9 +30,9 @@ module RestPki
 
         def to_model
             {
-                'includeXmlIdAttribute': @include_xml_id_attribute,
-                'elementIdAttributes': @element_id_attributes,
-                'globalIdAttributes': @global_id_attributes
+                includeXmlIdAttribute: @include_xml_id_attribute,
+                elementIdAttributes: @element_id_attributes,
+                globalIdAttributes: @global_id_attributes
             }
         end
 

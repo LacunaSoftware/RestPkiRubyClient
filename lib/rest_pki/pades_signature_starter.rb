@@ -16,6 +16,8 @@ module RestPki
             file = File.open(pdf_path, 'rb')
             @pdf_content_base64 = Base64.encode64(file.read)
             file.close
+
+            @pdf_content_base64
         end
 
         def set_pdf_tosign_from_raw(content_raw)
@@ -37,10 +39,10 @@ module RestPki
         #endregion
 
         def start_with_webpki
-            if @pdf_content_base64.nil?
+            if @pdf_content_base64.to_a.blank?
                 raise 'The PDF to sign was not set'
             end
-            if @signature_policy_id.nil?
+            if @signature_policy_id.to_s.blank?
                 raise 'The signature policy was not set'
             end
 
@@ -51,18 +53,18 @@ module RestPki
                 callbackArgument: @callback_argument,
                 visualRepresentation: @visual_representation
             }
-            unless @signer_certificate.nil?
-                request['certificate'] = Base64.encode64(@signer_certificate)
+            unless @certificate.to_a.blank?
+                request['certificate'] = Base64.encode64(@certificate)
             end
 
             response = @restpki_client.post('Api/PadesSignatures', request, 'pades_model')
 
-            unless response.certificate.nil?
-                @certificate_info = response.certificate
+            unless response['certificate'].nil?
+                @certificate_info = response['certificate']
             end
             @done = true
 
-            response.token
+            response['token']
         end
     end
 end

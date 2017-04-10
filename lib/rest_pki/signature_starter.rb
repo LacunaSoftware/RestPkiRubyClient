@@ -1,10 +1,11 @@
 
 module RestPki
     class SignatureStarter
-        attr_accessor :signature_policy_id, :security_context_id, :callback_argument
+        attr_accessor :certificate, :signature_policy_id, :security_context_id, :callback_argument
 
         def initialize(restpki_client)
             @restpki_client = restpki_client
+            @certificate = nil
             @signature_policy_id = nil
             @security_context_id = nil
             @callback_argument = nil
@@ -12,11 +13,11 @@ module RestPki
             @certificate_info = nil
         end
 
-        def certificate_info
+        def certificate
             unless @done
-                raise 'The "certificate_info" field can only be accessed after calling one of the start methods'
+                raise 'The field "certificate" can only be accessed after calling one of the start methods'
             end
-            @certificate_info
+            @certificate
         end
 
         def start_with_webpki

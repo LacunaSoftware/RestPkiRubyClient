@@ -3,9 +3,9 @@ module RestPki
     class ValidationResults
 
         def initialize(model)
-            @errors = convert_items(model.errors)
-            @warnings = convert_items(model.warnings)
-            @passed_checks = convert_items(model.passedChecks)
+            @errors = convert_items(model['errors'])
+            @warnings = convert_items(model['warnings'])
+            @passed_checks = convert_items(model['passedChecks'])
         end
 
         def is_valid
@@ -52,7 +52,7 @@ module RestPki
             text
         end
 
-        def get_summary(indentation_level)
+        def get_summary(indentation_level=0)
             tab = ''
             (1..indentation_level).each do; tab += '\t'; end
             text = "#{tab}Validation results: "
@@ -67,7 +67,7 @@ module RestPki
                     text += ", #{@warnings.to_a.length} warnings"
                 end
                 if has_passed_checks
-                    if !has_errors and !has_warnings
+                    if !has_errors && !has_warnings
                         text += ', all passed'
                     else
                         text += ", #{@passed_checks.to_a.length} passed"

@@ -4,12 +4,12 @@ module RestPki
         attr_reader :type, :message, :detail
 
         def initialize(model)
-            @type = model.type
-            @message = model.message
-            @detail = model.detail
+            @type = model['type']
+            @message = model['message']
+            @detail = model['detail']
             @inner_validation_results = nil
-            unless model.innerValidationResults.nil?
-                @inner_validation_results = RestPki::ValidationResults.new(model.innerValidationResults)
+            unless model['innerValidationResults'].nil?
+                @inner_validation_results = RestPki::ValidationResults.new(model['innerValidationResults'])
             end
         end
 
@@ -20,7 +20,7 @@ module RestPki
         def to_string(indentation_level)
             text = ''
             text += @message
-            unless @detail.nil?
+            unless @detail.to_s.blank?
                 text += " (#{@detail})"
             end
             unless @inner_validation_results.nil?

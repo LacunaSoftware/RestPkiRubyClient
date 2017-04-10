@@ -18,14 +18,14 @@ module RestPki
 
         def get_callback_argument
             unless @done
-                raise 'The "callback_argument" field can only be accessed after calling the finish method'
+                raise 'The field "callback_argument" can only be accessed after calling the finish method'
             end
             @callback_argument
         end
 
         def certificate_info
             unless @done
-                raise 'The "certificate_info" field can only be accessed after calling the finish method'
+                raise 'The field "certificate_info" can only be accessed after calling the finish method'
             end
             @certificate_info
         end

@@ -18,6 +18,8 @@ module RestPki
             file = File.open(xml_path, 'rb')
             @xml_content_base64 = Base64.encode64(file.read)
             file.close
+
+            @xml_content_base64
         end
 
         def set_xml_tosign_from_raw(content_raw)
@@ -38,7 +40,7 @@ module RestPki
 
         #endregion
 
-        def set_signature_element_location(xpath, insertion_option, namespace_manager)
+        def set_signature_element_location(xpath, insertion_option, namespace_manager=nil)
             @xpath = xpath
             @insertion_option = insertion_option
             @namespace_manager = namespace_manager
@@ -47,12 +49,12 @@ module RestPki
         protected
         def verify_common_parameters(is_with_webpki=false)
             unless is_with_webpki
-                if @signer_certificate.nil?
+                if @certificate.to_a.blank?
                     raise 'The certificate was not set'
                 end
             end
 
-            if @signature_policy_id.nil?
+            if @signature_policy_id.to_s.blank?
                 raise 'The signature policy was not set'
             end
         end
@@ -63,7 +65,7 @@ module RestPki
                 signaturePolicyId: @signature_policy_id,
                 securityContextId: @security_context_id
             }
-            unless @xml_content_base64.nil?
+            unless @xml_content_base64.to_a.blank?
                 request['xml'] = @xml_content_base64
             end
             unless @xpath.nil? or @insertion_option.nil?

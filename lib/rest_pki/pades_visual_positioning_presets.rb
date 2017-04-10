@@ -5,10 +5,10 @@ module RestPki
 
         def self.get_footnote(restpki_client, page_number=nil, rows=nil)
             url_segment = 'Footnote'
-            unless page_number.nil?
+            unless page_number.to_s.blank?
                 url_segment += '?pageNumber=' + page_number
             end
-            unless rows.nil?
+            unless rows.to_s.blank?
                 url_segment += '?rows=' + rows
             end
             get_preset(restpki_client, url_segment)
