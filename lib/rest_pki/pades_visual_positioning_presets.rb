@@ -21,11 +21,11 @@ module RestPki
 
         private
         def self.get_preset(restpki_client, url_segment)
-            if @@cached_presets.has_key? url_segment
+            if @@cached_presets.to_hash.has_key? url_segment
                 return @@cached_presets[url_segment]
             end
             preset = restpki_client.get("Api/PadesVisualPositioningPresets/#{url_segment}", 'pades_model')
-            @cached_presets[url_segment] = preset
+            @@cached_presets[url_segment] = preset
             preset
         end
     end
