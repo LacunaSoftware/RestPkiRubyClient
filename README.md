@@ -5,7 +5,9 @@ This library contains classes that encapsulate the calls to the REST PKI API.
 
 The recommended way to install **REST PKI Client lib** is through [RubyGems](https://rubygems.org/):
 
+````ruby
     gem 'rest_pki', '<package_version>'
+````
     
 Samples
 -------
