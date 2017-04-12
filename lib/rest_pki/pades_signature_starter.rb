@@ -39,7 +39,7 @@ module RestPki
         #endregion
 
         def start_with_webpki
-            if @pdf_content_base64.to_a.blank?
+            if @pdf_content_base64.to_s.blank?
                 raise 'The PDF to sign was not set'
             end
             if @signature_policy_id.to_s.blank?

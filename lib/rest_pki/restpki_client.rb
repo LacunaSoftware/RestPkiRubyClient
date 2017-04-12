@@ -21,7 +21,7 @@ module RestPki
             end
             check_response(verb, url, response)
 
-            RestPkiObject.convert(MultiJson.decode(response['body']), object_model)
+            RestPkiObject.convert(MultiJson.decode(response.body), object_model)
         end
 
         def post(url, data, object_model)
@@ -35,7 +35,7 @@ module RestPki
             end
             check_response(verb, url, response)
 
-            RestPkiObject.convert(MultiJson.decode(response['body']), object_model)
+            RestPkiObject.convert(MultiJson.decode(response.body), object_model)
         end
 
         def get_authentication
@@ -59,11 +59,11 @@ module RestPki
         end
 
         def check_response(verb, url, http_response)
-            status_code = http_response['code']
+            status_code = http_response.code
             if status_code < 200 || status_code > 299
                 ex = null
                 begin
-                    response = MultiJson.decode http_response['body']
+                    response = MultiJson.decode http_response.body
                     if status_code == 422 && response['code'].to_s.blank?
                         if response['code'] == 'ValidationError'
                             vr = ValidationResults.new(response['validationResults'])
