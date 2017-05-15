@@ -15,5 +15,5 @@ And with installing via [Bundler](http://bundler.io/) on your project root folde
 
 Samples
 -------
-Please visit the [REST PKI samples repository](https://github.com/LacunaSoftware/RestPkiSamples/tree/master/RubyOnRails)
+Please visit the [Rest PKI samples repository](https://github.com/LacunaSoftware/RestPkiSamples/tree/master/Ruby)
 for examples on how to use this library.
