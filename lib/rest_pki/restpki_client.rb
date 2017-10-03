@@ -53,7 +53,9 @@ module RestPki
                 headers: {
                     'Content-Type': 'application/json; charset=utf8',
                     Accept: 'application/json',
-                    Authorization: "Bearer #{@access_token}"
+                    Authorization: "Bearer #{@access_token}",
+                    'X-RestPki-Client': 'Ruby',
+                    'X-RestPki-Platform': RUBY_VERSION
                 }
             }
         end
