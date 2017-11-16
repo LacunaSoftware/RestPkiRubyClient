@@ -12,10 +12,10 @@ module RestPki
                 raise 'The token was not set'
             end
 
-            if @signature.to_a.blank?
+            if @signature.to_s.blank?
                 response = @restpki_client.post("Api/CadesSignatures/#{@token}/Finalize", nil, 'cades_model')
             else
-                request = { signature: Base64.encode64(@signature) }
+                request = { signature: @signature }
                 response = @restpki_client.post("Api/CadesSignatures/#{@token}/SignedBytes", request, 'cades_model')
             end
 

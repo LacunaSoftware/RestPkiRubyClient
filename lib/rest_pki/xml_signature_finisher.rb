@@ -13,10 +13,10 @@ module RestPki
                 raise 'The token was not set'
             end
 
-            if @signature.to_a.blank?
+            if @signature.to_s.blank?
                 response = @restpki_client.post("Api/XmlSignatures/#{@token}/Finalize", nil, 'xml_model')
             else
-                request = { signature: Base64.encode64(@signature) }
+                request = { signature: @signature }
                 response = @restpki_client.post("Api/XmlSignatures/#{@token}/SignedBytes", request, 'xml_model')
             end
 

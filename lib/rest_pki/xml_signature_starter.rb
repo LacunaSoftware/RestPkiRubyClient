@@ -49,7 +49,7 @@ module RestPki
         protected
         def verify_common_parameters(is_with_webpki=false)
             unless is_with_webpki
-                if @certificate.to_a.blank?
+                if @signer_certificate_base64.to_s.blank?
                     raise 'The certificate was not set'
                 end
             end
