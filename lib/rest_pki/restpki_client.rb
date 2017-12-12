@@ -15,12 +15,12 @@ module RestPki
             params = get_rest_params(verb, url)
 
             begin
-                response = RestClient::Request.execute(params).instance_values
+                response = RestClient::Request.execute params
             rescue RestClient::Exception => ex
-                response = {
+                response = RestPkiObject.convert({
                     'code' => ex.http_code,
                     'body' => ex.response
-                }
+                }, 'response_model')
             rescue Exception => ex
                 raise RestUnreachableError.new(verb, url, ex.message)
             end
@@ -34,12 +34,12 @@ module RestPki
             params = get_rest_params(verb, url, data)
 
             begin
-                response = RestClient::Request.execute(params).instance_values
+                response = RestClient::Request.execute params
             rescue RestClient::Exception => ex
-                response = {
-                    'code' => ex.http_code,
-                    'body' => ex.response
-                }
+                response = RestPkiObject.convert({
+                    code => ex.http_code,
+                    :body => ex.response
+                }, 'response_model')
             rescue Exception => ex
                 raise RestUnreachableError.new(verb, url, ex.message)
             end
@@ -71,11 +71,11 @@ module RestPki
         end
 
         def check_response(verb, url, http_response)
-            status_code = http_response['code']
+            status_code = http_response.code
             if status_code < 200 || status_code > 299
                 ex = null
                 begin
-                    response = MultiJson.decode http_response['body']
+                    response = MultiJson.decode http_response.body
                     if status_code == 422 && response['code'].to_s.blank?
                         if response['code'] == 'ValidationError'
                             vr = ValidationResults.new(response['validationResults'])
