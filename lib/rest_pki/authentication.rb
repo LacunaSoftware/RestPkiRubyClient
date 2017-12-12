@@ -4,7 +4,7 @@ require 'multi_json'
 
 module RestPki
     class Authentication
-        attr_acessor :ignore_revocation_status_unknown
+        attr_accessor :ignore_revocation_status_unknown
 
         def initialize(restpki_client)
             @restpki_client = restpki_client
