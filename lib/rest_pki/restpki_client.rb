@@ -18,7 +18,7 @@ module RestPki
                 response = RestClient::Request.execute params
             rescue RestClient::Exception => ex
                 response = {
-                    code => ex.initial_response_code,
+                    code => ex.http_code,
                     body => ex.response
                 }
             rescue Exception => ex
@@ -37,7 +37,7 @@ module RestPki
                 response = RestClient::Request.execute params
             rescue RestClient::Exception => ex
                 response = {
-                    code => ex.initial_response_code,
+                    code => ex.http_code,
                     body => ex.response
                 }
             rescue Exception => ex
