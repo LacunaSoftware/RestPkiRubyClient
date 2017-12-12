@@ -17,7 +17,10 @@ module RestPki
             begin
                 response = RestClient::Request.execute params
             rescue RestClient::Exception => ex
-                response = ex.response
+                response = {
+                    code => ex.initial_response_code,
+                    body => ex.response
+                }
             rescue Exception => ex
                 raise RestUnreachableError.new(verb, url, ex.message)
             end
@@ -33,7 +36,10 @@ module RestPki
             begin
                 response = RestClient::Request.execute params
             rescue RestClient::Exception => ex
-                response = ex.response
+                response = {
+                    code => ex.initial_response_code,
+                    body => ex.response
+                }
             rescue Exception => ex
                 raise RestUnreachableError.new(verb, url, ex.message)
             end
