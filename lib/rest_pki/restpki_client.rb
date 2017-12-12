@@ -18,8 +18,8 @@ module RestPki
                 response = RestClient::Request.execute params
             rescue RestClient::Exception => ex
                 response = RestPkiObject.convert({
-                    'code' => ex.http_code,
-                    'body' => ex.response
+                    :code => ex.http_code,
+                    :body => ex.response
                 }, 'response_model')
             rescue Exception => ex
                 raise RestUnreachableError.new(verb, url, ex.message)
@@ -37,7 +37,7 @@ module RestPki
                 response = RestClient::Request.execute params
             rescue RestClient::Exception => ex
                 response = RestPkiObject.convert({
-                    code => ex.http_code,
+                    :code => ex.http_code,
                     :body => ex.response
                 }, 'response_model')
             rescue Exception => ex
