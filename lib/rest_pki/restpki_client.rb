@@ -73,7 +73,7 @@ module RestPki
         def check_response(verb, url, http_response)
             status_code = http_response.code
             if status_code < 200 || status_code > 299
-                ex = null
+                ex = nil
                 begin
                     response = MultiJson.decode http_response.body
                     if status_code == 422 && response['code'].to_s.blank?
