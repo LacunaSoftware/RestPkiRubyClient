@@ -63,7 +63,8 @@ module RestPki
             request = {
                 signatureElementId: @signature_element_id,
                 signaturePolicyId: @signature_policy_id,
-                securityContextId: @security_context_id
+                securityContextId: @security_context_id,
+                ignoreRevocationStatusUnknown: @ignore_revocation_status_unknown
             }
             unless @xml_content_base64.to_s.blank?
                 request['xml'] = @xml_content_base64
