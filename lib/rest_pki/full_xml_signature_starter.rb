@@ -30,6 +30,7 @@ module RestPki
             end
 
             request = get_request
+            request['ignoreRevocationStatusUnknown'] = @ignore_revocation_status_unknown
 
             response = @restpki_client.post('Api/XmlSignatures/FullXmlSignature', request, 'xml_model')
 

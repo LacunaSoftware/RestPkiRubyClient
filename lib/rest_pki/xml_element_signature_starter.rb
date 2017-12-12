@@ -47,6 +47,7 @@ module RestPki
             unless @id_resolution_table.nil?
                 request['idResolutionTable'] = @id_resolution_table.to_model
             end
+            request['ignoreRevocationStatusUnknown'] = @ignore_revocation_status_unknown
 
             response = @restpki_client.post('Api/XmlSignatures/XmlElementSignature', request, 'xml_model')
 

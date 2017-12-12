@@ -51,8 +51,7 @@ module RestPki
                 pdfToSign: @pdf_content_base64,
                 signaturePolicyId: @signature_policy_id,
                 callbackArgument: @callback_argument,
-                visualRepresentation: @visual_representation,
-                ignoreRevocationStatusUnknown: @ignore_revocation_status_unknown
+                visualRepresentation: @visual_representation
             }
             unless @signer_certificate_base64.to_s.blank?
                 request['certificate'] = Base64.encode64(@signer_certificate_base64)
