@@ -4,15 +4,20 @@ require 'multi_json'
 
 module RestPki
     class Authentication
+        attr_acessor :ignore_revocation_status_unknown
 
         def initialize(restpki_client)
             @restpki_client = restpki_client
             @certificate_info = nil
             @done = false
+            @ignore_revocation_status_unknown = false
         end
 
         def start_with_webpki(security_context_id)
-            request = { securityContextId: security_context_id }
+            request = {
+                securityContextId: security_context_id,
+                ignoreRevocationStatusUnknown: @ignore_revocation_status_unknown
+            }
             response = @restpki_client.post('Api/Authentications', request, 'authentication_model')
             response['token']
         end
