@@ -78,7 +78,8 @@ module RestPki
                 securityContextId: @security_context_id,
                 signaturePolicyId: @signature_policy_id,
                 callbackArgument: @callback_argument,
-                encapsulateContent: @encapsulate_content
+                encapsulateContent: @encapsulate_content,
+                ignoreRevocationStatusUnknown: @ignore_revocation_status_unknown
             }
             unless @signer_certificate_base64.to_s.blank?
                 request['certificate'] = Base64.encode64(@signer_certificate_base64)
@@ -115,7 +116,8 @@ module RestPki
                 securityContextId: @security_context_id,
                 signaturePolicyId: @signature_policy_id,
                 callbackArgument: @callback_argument,
-                encapsulateContent: @encapsulate_content
+                encapsulateContent: @encapsulate_content,
+                ignoreRevocationStatusUnknown: @ignore_revocation_status_unknown
             }
             unless @signer_certificate_base64.to_s.blank?
                 request['certificate'] = Base64.encode64(@signer_certificate_base64)

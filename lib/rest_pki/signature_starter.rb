@@ -2,7 +2,7 @@ require 'base64'
 
 module RestPki
     class SignatureStarter
-        attr_accessor :signature_policy_id, :security_context_id, :callback_argument
+        attr_accessor :signature_policy_id, :security_context_id, :callback_argument, :ignore_revocation_status_unknown
 
         def initialize(restpki_client)
             @restpki_client = restpki_client
@@ -12,6 +12,7 @@ module RestPki
             @callback_argument = nil
             @done = false
             @certificate = nil
+            @ignore_revocation_status_unknown = false
         end
 
         def certificate
