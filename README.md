@@ -13,6 +13,10 @@ gem 'rest_pki', '~> 1.0.0'
 And with installing via [Bundler](http://bundler.io/) on your project root folder:
     
     bundle install
+    
+You can install this gem globally by executing the following command:
+
+    gem install rest_pki 
 
 Samples
 -------
