@@ -14,7 +14,7 @@ And with installing via [Bundler](http://bundler.io/) on your project root folde
     
     bundle install
     
-You can install this gem globally by executing the following command:
+Alternatively, You can install this gem globally by executing the following command:
 
     gem install rest_pki 
 
