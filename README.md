@@ -1,5 +1,6 @@
 REST PKI client lib for Ruby
 ============================
+[![Gem Version](https://badge.fury.io/rb/rest_pki.svg)](https://badge.fury.io/rb/rest_pki)
 
 This library contains classes that encapsulate the calls to the REST PKI API.
 
