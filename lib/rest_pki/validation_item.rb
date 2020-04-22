@@ -18,13 +18,13 @@ module RestPki
         end
 
         def to_string(indentation_level)
-            text = ''
+            text = ""
             text += @message
             unless @detail.to_s.blank?
                 text += " (#{@detail})"
             end
             unless @inner_validation_results.nil?
-                text += '\n'
+                text += "\n"
                 text += @inner_validation_results.to_string(indentation_level + 1)
             end
             text
