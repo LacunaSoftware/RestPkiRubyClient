@@ -103,7 +103,7 @@ module RestPki
 
         def initialize()
             @name = 'MD5'
-            @oid = Oids.MD5
+            @oid = Oids.oids["MD5"]
             @byte_length = 16
             @api_model = 'md5'
             @xml_uri = 'http://www.w3.org/2001/04/xmldsig-more#md5'
@@ -116,7 +116,7 @@ module RestPki
 
         def initialize()
             @name = 'SHA1'
-            @oid = Oids.SHA1
+            @oid = Oids.oids["SHA1"]
             @byte_length = 20
             @api_model = 'sha1'
             @xml_uri = 'http://www.w3.org/2000/09/xmldsig#sha1'
@@ -129,7 +129,7 @@ module RestPki
 
         def initialize()
             @name = 'SHA256'
-            @oid = Oids.SHA256
+            @oid = Oids.oids["SHA256"]
             @byte_length = 32
             @api_model = 'sha256'
             @xml_uri = 'http://www.w3.org/2001/04/xmlenc#sha256'
@@ -142,7 +142,7 @@ module RestPki
 
         def initialize()
             @name = 'SHA384'
-            @oid = Oids.SHA384
+            @oid = Oids.oids["SHA384"]
             @byte_length = 48
             @api_model = 'sha384'
             @xml_uri = 'http://www.w3.org/2001/04/xmldsig-more#sha384'
@@ -155,7 +155,7 @@ module RestPki
 
         def initialize()
             @name = 'SHA512'
-            @oid = Oids.SHA512
+            @oid = Oids.oids["SHA512"]
             @byte_length = 64
             @api_model = 'sha512'
             @xml_uri = 'http://www.w3.org/2001/04/xmlenc#sha512'
