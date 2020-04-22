@@ -1,6 +1,7 @@
 module RestPki
     class PKCertificate
-        attr_reader :email_address, :serial_number, :validity_start, :validity_end, :subject_name, :issuer_name, :pki_brazil, :pki_italy, :issuer
+        attr_reader :email_address, :serial_number, :validity_start, :validity_end, :subject_name
+        attr_reader :issuer_name, :pki_brazil, :pki_italy, :issuer
         def initialize(model)
             @email_address = model['emailAddress']
             @serial_number = model['serialNumber']
@@ -37,7 +38,8 @@ module RestPki
         end
     end
     class PkiBrazilCertificateFields
-        attr_reader :certificate_type, :cpf, :cnpj, :responsavel, :company_name, :oab_uf, :oab_numero, :rg_numero, :rg_emissor, :rg_emissor_uf, :date_of_birth
+        attr_reader :certificate_type, :cpf, :cnpj, :responsavel, :company_name, :oab_uf, :oab_numero
+        attr_reader :rg_numero, :rg_emissor, :rg_emissor_uf, :date_of_birth
         def initialize(model)
             @certificate_type = model['certificateType']
             @cpf = model['cpf']
@@ -74,8 +76,8 @@ module RestPki
          end
     end
     class Name
-        attr_reader :common_name, :country, :dn_qualifier, :email_address, :generation_qualifier, :given_name, :initials, :locality, 
-        attr_reader :organization, :organization_unit, :pseudonym, :serial_number, :state_name, :surname, :title
+        attr_reader :common_name, :country, :dn_qualifier, :email_address, :generation_qualifier, :given_name, :initials
+        attr_reader :locality, :organization, :organization_unit, :pseudonym, :serial_number, :state_name, :surname, :title
         def initialize(model)
             @common_name = model['commonName']
             @country = model['country']

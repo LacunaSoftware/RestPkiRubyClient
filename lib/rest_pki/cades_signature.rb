@@ -5,7 +5,7 @@ module RestPki
             @encapsulated_content_type = model['encapsulatedContentType'];
             @has_encapsulated_content = model['hasEncapsulatedContent'];
             @signers = [];
-            if (model['signers']) {
+            if (model['signers'])
                 for signer in model['signers']
                     @signers.push(CadesSignerInfo.new(signer));
                 end

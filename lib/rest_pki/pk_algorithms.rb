@@ -9,28 +9,28 @@ module RestPki
             @pk_algorithm = pk_algorithm
         end
 
-        def self.MD5WithRSA()
-            return RSASignatureAlgorithm.new(DigestAlgorithm.MD5)
+        def self.MD5WithRSA
+            RSASignatureAlgorithm.new(DigestAlgorithm.MD5)
         end
       
-        def self.SHA1WithRSA()
-            return RSASignatureAlgorithm.new(DigestAlgorithm.SHA1)
+        def self.SHA1WithRSA
+            RSASignatureAlgorithm.new(DigestAlgorithm.SHA1)
         end
       
-        def self.SHA256WithRSA()
-            return RSASignatureAlgorithm.new(DigestAlgorithm.SHA256)
+        def self.SHA256WithRSA
+            RSASignatureAlgorithm.new(DigestAlgorithm.SHA256)
         end
       
-        def self.SHA384WithRSA()
-            return RSASignatureAlgorithm.new(DigestAlgorithm.SHA384)
+        def self.SHA384WithRSA
+            RSASignatureAlgorithm.new(DigestAlgorithm.SHA384)
         end
       
-        def self.SHA512WithRSA()
-            return RSASignatureAlgorithm.new(DigestAlgorithm.SHA512)
+        def self.SHA512WithRSA
+            RSASignatureAlgorithm.new(DigestAlgorithm.SHA512)
         end
       
         def self.algorithms()
-            return [
+            [
                SignatureAlgorithm.MD5WithRSA,
                SignatureAlgorithm.SHA1WithRSA,
                SignatureAlgorithm.SHA256WithRSA,
@@ -39,8 +39,8 @@ module RestPki
             ]
         end
       
-        def self.safeAlgorithms()
-            return [
+        def self.safe_algorithms()
+            [
                SignatureAlgorithm.SHA1WithRSA,
                SignatureAlgorithm.SHA256WithRSA,
                SignatureAlgorithm.SHA384WithRSA,
@@ -48,7 +48,7 @@ module RestPki
             ]
         end
       
-        def self.getInstanceByName(name)
+        def self.get_instance_by_name(name)
             begin
                 sig = SignatureAlgorithm._algorithms.find{ |s| s.name == name}
             rescue => exception
@@ -57,7 +57,7 @@ module RestPki
             sig
         end
       
-        def self.getInstanceByOid(oid)
+        def self.get_instance_by_oid(oid)
             begin
                 sig = SignatureAlgorithm._algorithms.find{ |s| s.oid == oid}
             rescue => exception
@@ -66,7 +66,7 @@ module RestPki
             sig
         end
       
-        def self.getInstanceBy@xml_uri(xml_uri)
+        def self.get_instance_by_xml_uri(xml_uri)
             begin
                 sig = SignatureAlgorithm._algorithms.find{ |s| s.xml_uri == xml_uri}
             rescue => exception
@@ -75,8 +75,9 @@ module RestPki
             sig
         end
       
-        def self.getInstanceByApiModel(model)
-            when model['algorithm']
+        def self.get_instance_by_api_model(model)
+            algorithm = model['algorithm']
+            case algorithm
             when SignatureAlgorithms.MD5_WITH_RSA
                 return SignatureAlgorithm.MD5WithRSA
             when SignatureAlgorithms.SHA1_WITH_RSA
@@ -88,7 +89,7 @@ module RestPki
             when SignatureAlgorithms.SHA512_WITH_RSA
                 return SignatureAlgorithm.SHA512WithRSA
             else
-                raise 'Unsupported signature algorithm: #{model['algorithm']}'
+                raise 'Unsupported signature algorithm: #{algorithm}'
             end
         end
     end
@@ -102,23 +103,18 @@ module RestPki
             when DigestAlgorithm.MD5
                 oid = Oids.MD5_WITH_RSA
                 xml_uri = 'http://www.w3.org/2001/04/xmldsig-more#rsa-md5'
-                break
             when DigestAlgorithm.SHA1
                 oid = Oids.SHA1_WITH_RSA
                 xml_uri = 'http://www.w3.org/2000/09/xmldsig#rsa-sha1'
-                break
             when DigestAlgorithm.SHA256
                 oid = Oids.SHA256_WITH_RSA
                 xml_uri = 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256'
-                break
             when DigestAlgorithm.SHA384
                 oid = Oids.SHA384_WITH_RSA
                 xml_uri = 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha384'
-                break
             when DigestAlgorithm.SHA512
                 oid = Oids.SHA512_WITH_RSA
                 xml_uri = 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha512'
-                break
             else
                 raise 'Unsupported digest algorithm: #{digestA_algorithm}'
             end
