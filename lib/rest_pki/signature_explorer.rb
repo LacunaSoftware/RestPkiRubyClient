@@ -28,7 +28,7 @@ module RestPki
         end
 
         protected
-        def get_request(mimeType)
+        def get_request(mime_type)
             request = {
                 validate: @validate,
                 securityContextId: @security_context_id,
@@ -39,7 +39,7 @@ module RestPki
             unless @signature_file_content.to_s.empty?
                 request['file'] = {
                     content: @signature_file_content,
-                    mimeType: mimeType
+                    mimeType: mime_type
                 }
             end
             request

@@ -9,23 +9,23 @@ module RestPki
             @pk_algorithm = pk_algorithm
         end
 
-        def self.MD5WithRSA
+        def self.md5_with_rsa
             RSASignatureAlgorithm.new(DigestAlgorithm.MD5)
         end
       
-        def self.SHA1WithRSA
+        def self.sha1_with_rsa
             RSASignatureAlgorithm.new(DigestAlgorithm.SHA1)
         end
       
-        def self.SHA256WithRSA
+        def self.sha256_with_rsa
             RSASignatureAlgorithm.new(DigestAlgorithm.SHA256)
         end
       
-        def self.SHA384WithRSA
+        def self.sha384_with_rsa
             RSASignatureAlgorithm.new(DigestAlgorithm.SHA384)
         end
       
-        def self.SHA512WithRSA
+        def self.sha512_with_rsa
             RSASignatureAlgorithm.new(DigestAlgorithm.SHA512)
         end
       
@@ -183,7 +183,7 @@ module RestPki
         end
       
         def self.get_signature_algorithm(digest_algorithm)
-            return RSASignatureAlgorithm.new(digest_algorithm)
+            RSASignatureAlgorithm.new(digest_algorithm)
         end
     end
 end

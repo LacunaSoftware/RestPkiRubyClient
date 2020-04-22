@@ -14,13 +14,13 @@ module RestPki
             @value = Base64.decode64(model['value'])
         end
 
-        def hexValue
+        def hex_value
             return @value.each_byte.map { |b| b.to_s(16) }.join
         end
       
-        def toModel()
+        def to_model()
             {
-               algorithm: @algorithm.apiModel,
+               algorithm: @algorithm.api_model,
                value: @value
             }
         end

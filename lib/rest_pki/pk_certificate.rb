@@ -55,7 +55,7 @@ module RestPki
                @date_of_birth = Date.new(model['dateOfBirth'])
             end
         end
-        def cpfFormatted
+        def cpf_formatted
             if @cpf.to_s.empty?
                return ''
             end
@@ -65,7 +65,7 @@ module RestPki
             return @cpf.gsub(/[.-]/, "").gsub(/\A(\d{3})(\d{3})(\d{3})(\d{2})\Z/, "\\1.\\2.\\3-\\4")
          end
       
-        def cnpjFormatted
+        def cnpj_formatted
             if @cnpj.to_s.empty?
                return ''
             end
