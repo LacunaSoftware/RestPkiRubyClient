@@ -38,7 +38,7 @@ module RestPki
 
             unless @signature_file_content.to_s.empty?
                 request['file'] = {
-                    content: @signature_file_content,
+                    content: Base64.encode64(@signature_file_content),
                     mimeType: mime_type
                 }
             end

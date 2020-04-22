@@ -51,8 +51,8 @@ module RestPki
             @rg_numero = model['rgNumero']
             @rg_emissor = model['rgEmissor']
             @rg_emissor_uf = model['rgEmissorUF']
-            if model['dateOfBirth']
-               @date_of_birth = Date.new(model['dateOfBirth'])
+            unless model['dateOfBirth'].to_s.empty?
+               @date_of_birth = Date.parse(model['dateOfBirth'])
             end
         end
         def cpf_formatted

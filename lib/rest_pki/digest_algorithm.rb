@@ -30,23 +30,23 @@ module RestPki
         end
 
         def self.MD5
-            md5
+            RestPki::MD5
         end
       
         def self.SHA1
-            sha1
+            RestPki::SHA1
         end
       
         def self.SHA256
-            sha256
+            RestPki::SHA256
         end
       
         def self.SHA384
-            sha384
+            RestPki::SHA384
         end
       
         def self.SHA512
-            sha512
+            RestPki::SHA512
         end
 
         def self.algorithms()
@@ -81,16 +81,16 @@ module RestPki
         end
       
         def self.get_instance_by_api_model(algorithm)
-            case algorithm
-            when DigestAlgorithms.MD5
+            case algorithm.upcase
+            when 'MD5'
                 DigestAlgorithm.MD5
-            when DigestAlgorithms.SHA1
+            when 'SHA1'
                 DigestAlgorithm.SHA1
-            when DigestAlgorithms.SHA256
+            when 'SHA256'
                 DigestAlgorithm.SHA256
-            when DigestAlgorithms.SHA384
+            when 'SHA384'
                 DigestAlgorithm.SHA384
-            when DigestAlgorithms.SHA512
+            when 'SHA512'
                 DigestAlgorithm.SHA512
             else
                 raise 'Unsupported digest algorithm: #{algorithm}'
@@ -164,9 +164,9 @@ module RestPki
         end
     end
 
-    md5 = MD5DigestAlgorithm.new()
-    sha1 = SHA1DigestAlgorithm.new()
-    sha256 = SHA256DigestAlgorithm.new()
-    sha384 = SHA384DigestAlgorithm.new()
-    sha512 = SHA512DigestAlgorithm.new()
+    MD5 = MD5DigestAlgorithm.new()
+    SHA1 = SHA1DigestAlgorithm.new()
+    SHA256 = SHA256DigestAlgorithm.new()
+    SHA384 = SHA384DigestAlgorithm.new()
+    SHA512 = SHA512DigestAlgorithm.new()
 end
