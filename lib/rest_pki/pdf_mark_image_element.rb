@@ -14,5 +14,20 @@ module RestPki
       end
       model
     end
+
+    #region FluentApi
+
+    def with_image(image)
+      @image = image
+      self
+    end
+  
+    def with_image(image_content, mime_type)
+      @image = PdfMarkImage.new(image_content, mime_type)
+      self
+    end
+  
+    #endregion
+  
   end
 end

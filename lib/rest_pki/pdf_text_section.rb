@@ -24,5 +24,34 @@ module RestPki
           fontSize: @font_size,
       }
     end
+
+    #region FluentApi
+
+    def with_font_size(font_size)
+      @font_size = font_size
+      self
+    end
+  
+    def with_text(text)
+      @text = text
+      self
+    end
+  
+    def bold()
+      @style = PdfTextStyle::BOLD
+      self
+    end
+  
+    def italic()
+      @style = PdfTextStyle::ITALIC
+      self
+    end
+  
+    def with_color(color)
+      @color = color
+      self
+    end
+  
+    #endregion
   end
 end

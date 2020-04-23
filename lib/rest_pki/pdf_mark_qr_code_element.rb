@@ -14,5 +14,19 @@ module RestPki
       model['qrCodeDataDrawQuietZones'] = @draw_quiet_zone
       model
     end
+
+    #region FluentApi
+
+    def with_qr_code_data(qr_code_data)
+      @qr_code_data = qr_code_data
+      self
+    end
+  
+    def draw_quiet_zone()
+      @draw_quiet_zone = true
+      self
+    end
+  
+    #endregion
   end
 end

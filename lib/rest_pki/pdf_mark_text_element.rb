@@ -14,5 +14,34 @@ module RestPki
       model['align'] = @align
       model
     end
+
+    #region FluentApi
+
+    def align_text_left()
+      @align = 'Left'
+      self
+    end
+  
+    def align_text_right()
+      @align = 'Right'
+      self
+    end
+  
+    def align_text_center()
+      @align = 'Center'
+      self
+    end
+  
+    def add_section(section)
+      @text_sections.push(section)
+      self
+    end
+  
+    def add_section(text)
+      @text_sections.push(PdfTextSection.new(text))
+      self
+    end
+  
+    #endregion
   end
 end

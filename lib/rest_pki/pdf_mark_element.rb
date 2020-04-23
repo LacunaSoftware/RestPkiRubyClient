@@ -17,5 +17,38 @@ module RestPki
           opacity: @opacity,
       }
     end
+
+    #region FluentApi
+    def on_container(relative_container)
+      @relative_container = relative_container
+      self
+    end
+  
+    def with_rotation(rotation)
+      @rotation = rotation
+      self
+    end
+  
+    def rotate90_clockwise()
+      @rotation = 270
+      self
+    end
+  
+    def rotate90_counter_clockwise()
+      @rotation = 90
+      self
+    end
+  
+    def rotate180()
+      @rotation = 180
+      self
+    end
+  
+    def with_opacity(opacity)
+      @opacity = opacity
+      self
+    end
+  
+    #endregion
   end
 end
