@@ -10,7 +10,7 @@ module RestPki
             @default_signature_policy_id = nil
             @security_context_id = nil
             @validate = true
-            @acceptable_explicit_policies = nil;
+            @acceptable_explicit_policies = nil
         end
 
         def set_signature_file_from_path(path)
