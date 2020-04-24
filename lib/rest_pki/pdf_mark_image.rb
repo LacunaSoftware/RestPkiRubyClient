@@ -14,7 +14,7 @@ module RestPki
     end
 
     def to_model
-      if @resource.content.nil? or @resource.url.nil?
+      if (@resource.content.nil? && @resource.url.nil?)
         raise 'The image content was not set, neither its URL'
       end
       {

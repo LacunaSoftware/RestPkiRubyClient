@@ -9,7 +9,7 @@ module RestPki
       @border_color = Color.from_rgb_string('#000000') # Black
       @background_color = Color.from_rgb_string('#FFFFFF', 0) # Transparent
       @elements = []
-      @page_option = PdfMarkPageOptions::ALL_PAGE
+      @page_option = PdfMarkPageOptions::ALL_PAGES
       @page_option_number = nil
     end
 

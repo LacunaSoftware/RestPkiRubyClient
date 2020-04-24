@@ -17,7 +17,7 @@ module RestPki
 
     #region FluentApi
 
-    def with_image(image)
+    def with_mark_image(image)
       @image = image
       self
     end

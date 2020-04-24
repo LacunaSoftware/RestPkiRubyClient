@@ -37,7 +37,7 @@ module RestPki
       self
     end
   
-    def add_section(text)
+    def add_section_with_text(text)
       @text_sections.push(PdfTextSection.new(text))
       self
     end

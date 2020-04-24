@@ -55,6 +55,9 @@ require_relative 'rest_pki/pdf_marker'
 require_relative 'rest_pki/pdf_text_section'
 require_relative 'rest_pki/pdf_text_style'
 require_relative 'rest_pki/resource_content_or_reference'
+require_relative 'rest_pki/pades_visual_rectangle'
+require_relative 'rest_pki/pdf_container_definition'
+require_relative 'rest_pki/pdf_helper'
 
 Dir[File.expand_path('../rest_pki/resources/*.rb', __FILE__)].map do |path|
   require path
