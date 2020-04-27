@@ -12,7 +12,7 @@ module RestPki
 
     def to_model
       content = nil
-      unless @content
+      unless @content.nil?
         content = Base64.encode64(@content)
       end
       {

@@ -14,8 +14,8 @@ module RestPki
 
     def to_model
       color = nil
-      unless color.nil?
-        color = @color.nil?
+      unless @color.nil?
+        color = @color
       end
       {
           style: @style,

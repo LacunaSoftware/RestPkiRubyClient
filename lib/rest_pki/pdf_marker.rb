@@ -1,3 +1,4 @@
+require 'base64'
 module RestPki
   class PdfMarker
     attr_accessor :marks, :measurement_units, :page_optimization, :abort_if_signed
@@ -26,8 +27,8 @@ module RestPki
 
     def set_file_from_content_base64(content_base64)
       content = nil
-      unless content_base64
-        content = Base64.encode64(content_base64)
+      unless content_base64.nil?
+        content = Base64.decode64(content_base64)
       end
       @file_content = content
     end
@@ -47,12 +48,14 @@ module RestPki
       request = {
           marks: marks,
           measurementUnits: @measurement_units,
-          page_optimization: page_optimization,
+          pageOptimization: page_optimization,
           abortIfSigned: abort_if_signed
       }
-      request['file'] = Base64.encode64(@file_content)
+      request['file'] = {
+        content: Base64.encode64(@file_content)
+      }
       model = @client.post('Api/Pdf/AddMarks', request, 'pdf_marker_model')
-      model.file
+      model.file_content
     end
   end
 end

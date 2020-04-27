@@ -12,7 +12,7 @@ module RestPki
     def to_model
       {
           elementType: @element_type,
-          relative_container: @relative_container,
+          relativeContainer: @relative_container,
           rotation: @rotation,
           opacity: @opacity,
       }

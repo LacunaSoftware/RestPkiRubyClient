@@ -4,10 +4,10 @@ module RestPki
     class DigestAlgorithmAndValue
         attr_reader :algorithm, :value
         def initialize(model)
-            unless model['algorithm']
+            if model['algorithm'].to_s.blank?
                 raise 'The algorithm was not set'
             end
-            unless model['value']
+            if model['value'].to_s.blank?
                 raise 'The value was not set'
             end
             @algorithm = DigestAlgorithm.get_instance_by_api_model(model['algorithm'])

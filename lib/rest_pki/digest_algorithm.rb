@@ -25,7 +25,7 @@ module RestPki
 
         def check_length(digest_value)
             unless (digest_value.length == @byte_length)
-                raise 'A #{@name} digest should contain #{@byte_length} bytes, but a value with #{digest_value.length} bytes was given'
+                raise "A #{@name} digest should contain #{@byte_length} bytes, but a value with #{digest_value.length} bytes was given"
             end
         end
 
@@ -57,7 +57,7 @@ module RestPki
             begin
                 alg = DigestAlgorithm.algorithms.find{|a| a.name == name}
             rescue => exception
-                raise 'Unrecognized digest algorithm name: #{name}'
+                raise "Unrecognized digest algorithm name: #{name}"
             end
             alg
         end
@@ -66,7 +66,7 @@ module RestPki
             begin
                 alg = DigestAlgorithm.algorithms.find{|a| a.oid == oid}
             rescue => exception
-                raise 'Unrecognized digest algorithm oid: #{oid}'
+                raise "Unrecognized digest algorithm oid: #{oid}"
             end
             alg
         end
@@ -75,7 +75,7 @@ module RestPki
             begin
                 alg = DigestAlgorithm.algorithms.find{|a| a.xml_uri == xml_uri}
             rescue => exception
-                raise 'Unrecognized digest algorithm xml_uri: #{xml_uri}'
+                raise "Unrecognized digest algorithm xml_uri: #{xml_uri}"
             end
             alg
         end
@@ -93,7 +93,7 @@ module RestPki
             when 'SHA512'
                 DigestAlgorithm.SHA512
             else
-                raise 'Unsupported digest algorithm: #{algorithm}'
+                raise "Unsupported digest algorithm: #{algorithm}"
             end
         end
 
