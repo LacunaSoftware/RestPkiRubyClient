@@ -13,11 +13,11 @@ module RestPki
             @crypto_digest = crypto_digest
         end
 
-        MD5 = RestPki::MD5
-        SHA1 = RestPki::SHA1
-        SHA256 = RestPki::SHA256
-        SHA384 = RestPki::SHA384
-        SHA512 = RestPki::SHA512
+        def self.MD5; MD5DigestAlgorithm.new end
+        def self.SHA1; SHA1DigestAlgorithm.new end
+        def self.SHA256; SHA256DigestAlgorithm.new end
+        def self.SHA384; SHA384DigestAlgorithm.new end
+        def self.SHA512; SHA512DigestAlgorithm.new end
 
         def ==(comparison_object)
             if comparison_object.equal?(self)
@@ -37,11 +37,11 @@ module RestPki
 
         def self.algorithms
             [
-                DigestAlgorithm::MD5,
-                DigestAlgorithm::SHA1,
-                DigestAlgorithm::SHA256,
-                DigestAlgorithm::SHA384,
-                DigestAlgorithm::SHA512
+                DigestAlgorithm.MD5,
+                DigestAlgorithm.SHA1,
+                DigestAlgorithm.SHA256,
+                DigestAlgorithm.SHA384,
+                DigestAlgorithm.SHA512
             ]
         end
         
@@ -75,15 +75,15 @@ module RestPki
         def self.get_instance_by_api_model(algorithm)
             case algorithm.upcase
             when 'MD5'
-                DigestAlgorithm::MD5
+                DigestAlgorithm.MD5
             when 'SHA1'
-                DigestAlgorithm::SHA1
+                DigestAlgorithm.SHA1
             when 'SHA256'
-                DigestAlgorithm::SHA256
+                DigestAlgorithm.SHA256
             when 'SHA384'
-                DigestAlgorithm::SHA384
+                DigestAlgorithm.SHA384
             when 'SHA512'
-                DigestAlgorithm::SHA512
+                DigestAlgorithm.SHA512
             else
                 raise "Unsupported digest algorithm: #{algorithm}"
             end
@@ -155,10 +155,4 @@ module RestPki
             super(name, oid, byte_length, api_model, xml_uri, crypto_digest)
         end
     end
-
-    MD5 = MD5DigestAlgorithm.new
-    SHA1 = SHA1DigestAlgorithm.new
-    SHA256 = SHA256DigestAlgorithm.new
-    SHA384 = SHA384DigestAlgorithm.new
-    SHA512 = SHA512DigestAlgorithm.new
 end

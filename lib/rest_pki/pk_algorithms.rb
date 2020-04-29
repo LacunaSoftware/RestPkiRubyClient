@@ -1,4 +1,5 @@
 module RestPki
+
     class SignatureAlgorithm
         attr_reader :name, :oid, :xml_uri, :digest_algorithm, :pk_algorithm
         def initialize(name, oid, xml_uri, digest_algorithm, pk_algorithm)
@@ -9,27 +10,27 @@ module RestPki
             @pk_algorithm = pk_algorithm
         end
 
-        MD5_WITH_RSA = RestPki::MD5_WITH_RSA
-        SHA1_WITH_RSA = RestPki::SHA1_WITH_RSA
-        SHA256_WITH_RSA = RestPki::SHA256_WITH_RSA
-        SHA384_WITH_RSA = RestPki::SHA384_WITH_RSA
-        SHA512_WITH_RSA = RestPki::SHA512_WITH_RSA
+        def self.MD5_WITH_RSA; RSASignatureAlgorithm.new(DigestAlgorithm.MD5) end
+        def self.SHA1_WITH_RSA; RSASignatureAlgorithm.new(DigestAlgorithm.SHA1) end
+        def self.SHA256_WITH_RSA; RSASignatureAlgorithm.new(DigestAlgorithm.SHA256) end
+        def self.SHA384_WITH_RSA; RSASignatureAlgorithm.new(DigestAlgorithm.SHA384) end
+        def self.SHA512_WITH_RSA; RSASignatureAlgorithm.new(DigestAlgorithm.SHA512) end
       
         def self.algorithms
             [
-               SignatureAlgorithm::MD5_WITH_RSA,
-               SignatureAlgorithm::SHA1_WITH_RSA,
-               SignatureAlgorithm::SHA256_WITH_RSA,
-               SignatureAlgorithm::SHA384_WITH_RSA,
-               SignatureAlgorithm::SHA512_WITH_RSA
+               SignatureAlgorithm.MD5_WITH_RSA,
+               SignatureAlgorithm.SHA1_WITH_RSA,
+               SignatureAlgorithm.SHA256_WITH_RSA,
+               SignatureAlgorithm.SHA384_WITH_RSA,
+               SignatureAlgorithm.SHA512_WITH_RSA
             ]
         end
       
         def self.safe_algorithms
             [
-                SignatureAlgorithm::SHA256_WITH_RSA,
-                SignatureAlgorithm::SHA384_WITH_RSA,
-                SignatureAlgorithm::SHA512_WITH_RSA
+                SignatureAlgorithm.SHA256_WITH_RSA,
+                SignatureAlgorithm.SHA384_WITH_RSA,
+                SignatureAlgorithm.SHA512_WITH_RSA
             ]
         end
       
@@ -64,15 +65,15 @@ module RestPki
             algorithm = model['algorithm']
             case algorithm
             when 'MD5WithRSA'
-                return SignatureAlgorithm::MD5_WITH_RSA
+                return SignatureAlgorithm.MD5_WITH_RSA
             when 'SHA1WithRSA'
-                return SignatureAlgorithm::SHA1_WITH_RSA
+                return SignatureAlgorithm.SHA1_WITH_RSA
             when 'SHA256WithRSA'
-                return SignatureAlgorithm::SHA256_WITH_RSA
+                return SignatureAlgorithm.SHA256_WITH_RSA
             when 'SHA384WithRSA'
-                return SignatureAlgorithm::SHA384_WITH_RSA
+                return SignatureAlgorithm.SHA384_WITH_RSA
             when 'SHA512WithRSA'
-                return SignatureAlgorithm::SHA512_WITH_RSA
+                return SignatureAlgorithm.SHA512_WITH_RSA
             else
                 raise "Unsupported signature algorithm: #{algorithm}"
             end
@@ -85,19 +86,19 @@ module RestPki
             oid = nil
             xml_uri = nil
             case digest_algorithm
-            when DigestAlgorithm::MD5
+            when DigestAlgorithm.MD5
                 oid = Oids.oids["MD5_WITH_RSA"]
                 xml_uri = 'http://www.w3.org/2001/04/xmldsig-more#rsa-md5'
-            when DigestAlgorithm::SHA1
+            when DigestAlgorithm.SHA1
                 oid = Oids.oids["SHA1_WITH_RSA"]
                 xml_uri = 'http://www.w3.org/2000/09/xmldsig#rsa-sha1'
-            when DigestAlgorithm::SHA256
+            when DigestAlgorithm.SHA256
                 oid = Oids.oids["SHA256_WITH_RSA"]
                 xml_uri = 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256'
-            when DigestAlgorithm::SHA384
+            when DigestAlgorithm.SHA384
                 oid = Oids.oids["SHA384_WITH_RSA"]
                 xml_uri = 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha384'
-            when DigestAlgorithm::SHA512
+            when DigestAlgorithm.SHA512
                 oid = Oids.oids["SHA512_WITH_RSA"]
                 xml_uri = 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha512'
             else
@@ -124,10 +125,10 @@ module RestPki
             self.oid == comparison_object.oid
         end
 
-        RSA = RestPki::RSA
+        def self.RSA; RSAPKAlgorithm.new end
       
-         def self._algorithms
-            [PKAlgorithm::RSA]
+        def self._algorithms
+            [PKAlgorithm.RSA]
         end
       
         def self.get_instance_by_name(name)
@@ -151,7 +152,7 @@ module RestPki
         def self.get_instance_by_api_model(algorithm)
             case algorithm
             when 'RSA'
-                return PKAlgorithm::RSA
+                return PKAlgorithm.RSA
             else
                 raise "Unsupported private key algorithms #{algorithm}"
             end
@@ -169,11 +170,4 @@ module RestPki
             RSASignatureAlgorithm.new(digest_algorithm)
         end
     end
-
-    MD5_WITH_RSA = RSASignatureAlgorithm.new(DigestAlgorithm::MD5)
-    SHA1_WITH_RSA = RSASignatureAlgorithm.new(DigestAlgorithm::SHA1)
-    SHA256_WITH_RSA = RSASignatureAlgorithm.new(DigestAlgorithm::SHA256)
-    SHA384_WITH_RSA = RSASignatureAlgorithm.new(DigestAlgorithm::SHA384)
-    SHA512_WITH_RSA = RSASignatureAlgorithm.new(DigestAlgorithm::SHA512)
-    RSA = RSAPKAlgorithm.new
 end
