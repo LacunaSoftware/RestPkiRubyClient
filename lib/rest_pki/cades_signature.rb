@@ -2,13 +2,13 @@ module RestPki
     class CadesSignature
         attr_reader :encapsulated_content_type, :has_encapsulated_content, :signers
         def initialize(model)
-            @encapsulated_content_type = model['encapsulatedContentType'];
-            @has_encapsulated_content = model['hasEncapsulatedContent'];
-            @signers = [];
-            if (model['signers'])
-                for signer in model['signers']
-                    @signers.push(CadesSignerInfo.new(signer));
-                end
+            @encapsulated_content_type = model['encapsulatedContentType']
+            @has_encapsulated_content = model['hasEncapsulatedContent']
+            @signers = []
+            unless model['signers'].nil?
+                model['signers'].each { |signer|
+                    @signers.push(CadesSignerInfo.new(signer))
+                }
             end
         end
     end
@@ -33,18 +33,18 @@ module RestPki
             @signing_time = model['signingTime']
             @certified_date_reference = model['certifiedDateReference']
 
-            if (model['signaturePolicy'])
+            unless model['signaturePolicy'].nil?
                 @signature_policy = SignaturePolicyIdentifier.new(model['signaturePolicy'])
             end
 
             @timestamps = []
-            if (model['timestamps'])
-                for timestamp in model['timestamps']
+            unless model['timestamps'].nil?
+                model['timestamps'].each { |timestamp|
                     @timestamps.push(CadesTimestamp.new(timestamp))
-                end
+                }
             end
 
-            if (model['validationResults'])
+            unless model['validationResults'].nil?
                 @validation_results = ValidationResults.new(model['validationResults'])
             end
         end

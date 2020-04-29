@@ -17,17 +17,17 @@ module RestPki
 
     #region FluentApi
 
-    def align_text_left()
+    def align_text_left
       @align = 'Left'
       self
     end
   
-    def align_text_right()
+    def align_text_right
       @align = 'Right'
       self
     end
   
-    def align_text_center()
+    def align_text_center
       @align = 'Center'
       self
     end

@@ -4,8 +4,8 @@ module RestPki
 
         def initialize(model)
             super(model)
-            @is_document_timestamp = model['isDocumentTimestamp'];
-            @signature_fie_id_name = model['signatureFieldName'];
+            @is_document_timestamp = model['isDocumentTimestamp']
+            @signature_fie_id_name = model['signatureFieldName']
         end
     end
 end

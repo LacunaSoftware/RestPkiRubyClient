@@ -11,8 +11,7 @@ module RestPki
             end
 
             request = get_request(PDF_MIME_TYPE)
-            response = @restpki_client.post('Api/PadesSignatures/Open', request, 'pades_explorer_model')
-            response
+            @restpki_client.post('Api/PadesSignatures/Open', request, 'pades_explorer_model')
         end
     end
 end

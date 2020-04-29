@@ -29,17 +29,17 @@ module RestPki
       self
     end
   
-    def rotate90_clockwise()
+    def rotate90_clockwise
       @rotation = 270
       self
     end
   
-    def rotate90_counter_clockwise()
+    def rotate90_counter_clockwise
       @rotation = 90
       self
     end
   
-    def rotate180()
+    def rotate180
       @rotation = 180
       self
     end

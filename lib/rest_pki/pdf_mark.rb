@@ -39,12 +39,12 @@ module RestPki
       self
     end
 
-    def on_all_pages() 
+    def on_all_pages
       @page_option = PdfMarkPageOptions::ALL_PAGES
       self
     end
 
-    def on_new_page() 
+    def on_new_page
       @page_option = PdfMarkPageOptions::NEW_PAGE
       self
     end

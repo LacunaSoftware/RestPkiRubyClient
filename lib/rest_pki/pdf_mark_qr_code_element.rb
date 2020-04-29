@@ -22,7 +22,7 @@ module RestPki
       self
     end
   
-    def draw_quiet_zone()
+    def draw_quiet_zone
       @draw_quiet_zone = true
       self
     end

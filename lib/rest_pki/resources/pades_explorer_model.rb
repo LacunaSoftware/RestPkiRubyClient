@@ -4,9 +4,9 @@ module RestPki
 
         def initialize(model, _)
             @signers = []
-            for signer in model['signers'] do
+            model['signers'].each { |signer|
                 @signers.push(PadesSignerInfo.new(signer))
-            end
+            }
         end
     end
 end

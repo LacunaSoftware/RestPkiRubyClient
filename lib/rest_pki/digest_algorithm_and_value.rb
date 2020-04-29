@@ -3,6 +3,7 @@ require 'base64'
 module RestPki
     class DigestAlgorithmAndValue
         attr_reader :algorithm, :value
+
         def initialize(model)
             if model['algorithm'].to_s.blank?
                 raise 'The algorithm was not set'
@@ -15,10 +16,10 @@ module RestPki
         end
 
         def hex_value
-            return @value.each_byte.map { |b| b.to_s(16) }.join
+            @value.each_byte.map { |b| b.to_s(16) }.join
         end
       
-        def to_model()
+        def to_model
             {
                algorithm: @algorithm.api_model,
                value: @value

@@ -62,7 +62,7 @@ module RestPki
             unless @cpf.gsub(/[.-]/, "").length == 11
                return @cpf
             end
-            return @cpf.gsub(/[.-]/, "").gsub(/\A(\d{3})(\d{3})(\d{3})(\d{2})\Z/, "\\1.\\2.\\3-\\4")
+            @cpf.gsub(/[.-]/, "").gsub(/\A(\d{3})(\d{3})(\d{3})(\d{2})\Z/, "\\1.\\2.\\3-\\4")
          end
       
         def cnpj_formatted
@@ -72,7 +72,7 @@ module RestPki
             unless @cnpj.gsub(/[.-]/, "").length == 14
                return @cnpj
             end
-            return @cnpj.gsub(/[.-]/, "").gsub(/\A(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})\Z/, "\\1.\\2.\\3/\\4-\\5")
+            @cnpj.gsub(/[.-]/, "").gsub(/\A(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})\Z/, "\\1.\\2.\\3/\\4-\\5")
          end
     end
     class Name

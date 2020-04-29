@@ -37,12 +37,12 @@ module RestPki
       self
     end
   
-    def bold()
+    def bold
       @style = PdfTextStyle::BOLD
       self
     end
   
-    def italic()
+    def italic
       @style = PdfTextStyle::ITALIC
       self
     end

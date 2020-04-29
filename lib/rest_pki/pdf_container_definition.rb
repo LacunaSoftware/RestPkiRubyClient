@@ -2,8 +2,8 @@ module RestPki
     class PdfContainerDefinition
         attr_reader :container
 
-        def initialize()
-            @container = PadesVisualRectangle.new()
+        def initialize
+            @container = PadesVisualRectangle.new
         end
 
         def width(value)
@@ -11,11 +11,11 @@ module RestPki
             FixedWidth.new(@container)
         end
     
-        def var_width()
+        def var_width
             VarWidth.new(@container)
         end
     
-        def full_width()
+        def full_width
             @container.left = 0.0
             @container.right = 0.0
             WidthDefined.new(@container)
@@ -26,21 +26,21 @@ module RestPki
             FixedHeight.new(@container)
         end
     
-        def var_height()
+        def var_height
             VarHeight.new(@container)
         end
     
-        def full_height()
+        def full_height
             @container.top = 0.0
             @container.bottom = 0.0
             HeightDefined.new(@container)
         end
     
-        def var_width_and_height()
+        def var_width_and_height
             VarWidthAndHeight.new(@container)
         end
     
-        def full()
+        def full
             @container.top = 0.0
             @container.right = 0.0
             @container.bottom = 0.0
@@ -57,16 +57,16 @@ module RestPki
     
         def anchor_left(margin=0.0)
             @container.left = margin
-            return WidthDefined.new(@container)
+            WidthDefined.new(@container)
         end
     
         def anchor_right(margin=0.0)
             @container.right = margin
-            return WidthDefined.new(@container)
+            WidthDefined.new(@container)
         end
     
-        def center()
-            return WidthDefined.new(@container)
+        def center
+            WidthDefined.new(@container)
         end
     end
     
@@ -82,7 +82,7 @@ module RestPki
             end
             @container.left = left_margin
             @container.right = right_margin
-            return WidthDefined.new(@container)
+            WidthDefined.new(@container)
         end
     end
     
@@ -94,16 +94,16 @@ module RestPki
     
         def anchor_top(margin=0.0)
             @container.top = margin
-            return HeightDefined.new(@container)
+            HeightDefined.new(@container)
         end
     
         def anchor_bottom(margin=0.0)
             @container.bottom = margin
-            return HeightDefined.new(@container)
+            HeightDefined.new(@container)
         end
     
-        def center()
-            return HeightDefined.new(@container)
+        def center
+            HeightDefined.new(@container)
         end
     end
     
@@ -119,7 +119,7 @@ module RestPki
             end
             @container.top = top_margin
             @container.bottom = bottom_margin
-            return HeightDefined.new(@container)
+            HeightDefined.new(@container)
         end
     end
     
@@ -130,17 +130,17 @@ module RestPki
     
         def height(value)
             @container.height = value
-            return WidthDefinedFixedHeight.new(@container)
+            WidthDefinedFixedHeight.new(@container)
         end
     
-        def var_height()
-            return WidthDefinedVarHeight.new(@container)
+        def var_height
+            WidthDefinedVarHeight.new(@container)
         end
     
-        def full_height()
+        def full_height
             @container.top = 0.0
             @container.bottom = 0.0
-            return @container
+            @container
         end
     end
     
@@ -151,17 +151,17 @@ module RestPki
     
         def width(value)
             @container.width = value
-            return HeightDefinedFixedWidth.new(@container)
+            HeightDefinedFixedWidth.new(@container)
         end
     
-        def var_width()
-            return HeightDefinedVarWidth.new(@container)
+        def var_width
+            HeightDefinedVarWidth.new(@container)
         end
     
-        def full_width()
+        def full_width
             @container.left = 0.0
             @container.right = 0.0
-            return @container
+            @container
         end
     end
     
@@ -173,16 +173,16 @@ module RestPki
     
         def anchor_top(margin=0.0)
             @container.top = margin
-            return @container
+            @container
         end
     
         def anchor_bottom(margin=0.0)
             @container.bottom = margin
-            return @container
+            @container
         end
     
-        def center()
-            return @container
+        def center
+            @container
         end
     end
     
@@ -198,7 +198,7 @@ module RestPki
             end
             @container.top = top_margin
             @container.bottom = bottom_margin
-            return @container
+            @container
         end
     end
     
@@ -210,16 +210,16 @@ module RestPki
     
         def anchor_left(margin=0.0)
             @container.left = margin
-            return @container
+            @container
         end
     
         def anchor_right(margin=0.0)
             @container.right = margin
-            return @container
+            @container
         end
     
-        def center()
-            return @container
+        def center
+            @container
         end
     end
     
@@ -235,7 +235,7 @@ module RestPki
             end
             @container.left = left_margin
             @container.right = right_margin
-            return @container
+            @container
         end
     end
     
@@ -259,7 +259,7 @@ module RestPki
             @container.right = right_margin
             @container.left = left_margin
             @container.bottom = bottom_margin
-            return @container
+            @container
         end
     end
     
