@@ -33,9 +33,9 @@ module RestPki
         end
 
         def to_string(indentation_level)
-            tab = ''
-            (1..indentation_level).each do; tab += '\t'; end
-            text = ''
+            tab = ""
+            (1..indentation_level).each do; tab += "\t"; end
+            text = ""
             text += get_summary(indentation_level)
             if has_errors
                 text += "\n#{tab}Errors:\n"
@@ -53,11 +53,11 @@ module RestPki
         end
 
         def get_summary(indentation_level=0)
-            tab = ''
-            (1..indentation_level).each do; tab += '\t'; end
+            tab = ""
+            (1..indentation_level).each do; tab += "\t"; end
             text = "#{tab}Validation results: "
             if get_checks_performed == 0
-                text += 'no checks performed'
+                text += "no checks performed"
             else
                 text += "#{get_checks_performed} checks performed"
                 if has_errors
@@ -68,7 +68,7 @@ module RestPki
                 end
                 if has_passed_checks
                     if !has_errors && !has_warnings
-                        text += ', all passed'
+                        text += ", all passed"
                     else
                         text += ", #{@passed_checks.to_a.length} passed"
                     end
@@ -87,16 +87,16 @@ module RestPki
         end
 
         def join_items(items, indentation_level)
-            text = ''
+            text = ""
             is_first = true
-            tab = ''
-            (1..indentation_level).each do; tab += '\t'; end
+            tab = ""
+            (1..indentation_level).each do; tab += "\t"; end
 
             items.each do |item|
                 if is_first
                     is_first = false
                 else
-                    text += '\n'
+                    text += "\n"
                 end
                 text += "#{tab}- "
                 text += item.to_string(indentation_level)
